@@ -95,3 +95,11 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+// Add a sys_trace() function in kernel/sysproc.c that implements the new system
+// call by remembering its argument in a new variable in the proc structure (see kernel/proc.h).
+uint64 sys_trace(void){
+    printf("sys_trace: hi");
+    return 0;
+}
+
