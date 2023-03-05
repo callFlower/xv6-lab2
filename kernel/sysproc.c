@@ -99,10 +99,13 @@ sys_uptime(void)
 // Add a sys_trace() function in kernel/sysproc.c that implements the new system
 // call by remembering its argument in a new variable in the proc structure (see kernel/proc.h).
 uint64 sys_trace(void){
-    int n;
-    if(argint(0, &n) < 0)
+    int mask;
+    if(argint(0, &mask) < 0)
         return -1;
-    printf("sys_trace: hi  n: %d\n",n);
+    // get the present process
+    struct proc *p = myproc();
+    // give the present process--trace_mask with our mask
+    p->trace_mask = mask;
     return 0;
 }
 
