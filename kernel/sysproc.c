@@ -120,7 +120,7 @@ uint64 sys_sysinfo(void){
     info.nproc = acquire_nproc();
     if(argaddr(0, &addr) < 0)
         return -1;
-    if(copyout(p->pagetable, addr, (char *)&st, sizeof(st)) < 0)
+    if(copyout(p->pagetable, addr, (char *)&info, sizeof(info)) < 0)
         return -1;
     printf("sysinfo hi\n");
     return 0;
