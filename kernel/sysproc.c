@@ -118,7 +118,7 @@ uint64 sys_sysinfo(void){
     uint64 addr;
     struct proc *p = myproc();
     info.nproc = acquire_nproc();
-    if(argaddr(0, &st) < 0)
+    if(argaddr(0, &addr) < 0)
         return -1;
     if(copyout(p->pagetable, addr, (char *)&st, sizeof(st)) < 0)
         return -1;
