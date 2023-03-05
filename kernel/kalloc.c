@@ -82,7 +82,7 @@ kalloc(void)
 }
 
 uint64 acquire_freemem(){
-    truct run *r;
+    struct run *r;
     uint64 cnt = 0;
     acquire(&kmem.lock);
     r = kmem.freelist;
